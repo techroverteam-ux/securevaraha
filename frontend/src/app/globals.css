@@ -1,0 +1,852 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #374151;
+  --primary: #0ea5e9;
+  --primary-hover: #0284c7;
+  --primary-light: #f0f9ff;
+  --text: #374151;
+  --text-light: #6b7280;
+  --border: #d1d5db;
+  --font-inter: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Standardized font system */
+.font-system {
+  font-family: sans-serif;
+}
+
+/* Form input standardization */
+input, textarea, select {
+  font-family: sans-serif !important;
+  font-weight: 400 !important;
+  color: #374151 !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  color: var(--text) !important;
+  outline: none !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1) !important;
+}
+
+/* Label standardization */
+label {
+  font-family: sans-serif !important;
+  font-weight: 400 !important;
+  color: #6b7280 !important;
+  font-size: 12px !important;
+}
+
+/* Button standardization */
+button {
+  font-family: inherit !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+/* Heading standardization */
+h1, h2, h3, h4, h5, h6 {
+  font-family: sans-serif !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+}
+
+h1 { font-size: 16px !important; }
+h2 { font-size: 16px !important; }
+h3 { font-size: 14px !important; }
+h4, h5, h6 { font-size: 12px !important; }
+
+/* Text standardization */
+p, span, div {
+  font-family: sans-serif !important;
+  color: #374151 !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+}
+
+/* Table standardization */
+table, th, td {
+  font-family: sans-serif !important;
+  font-weight: 400 !important;
+  color: #111827 !important;
+  font-size: 12px !important;
+}
+
+th {
+  font-weight: 500 !important;
+  color: #111827 !important;
+  font-size: 12px !important;
+}
+
+/* Ensure table content is always black */
+table * {
+  color: #111827 !important;
+}
+
+/* Prevent color inheritance issues */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Font size utilities */
+.text-xs { font-size: 12px !important; }
+.text-sm { font-size: 12px !important; }
+.text-base { font-size: 14px !important; }
+.text-lg { font-size: 16px !important; }
+.text-xl { font-size: 16px !important; }
+.text-2xl { font-size: 16px !important; }
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .mobile-p-2 {
+    padding: 0.5rem !important;
+  }
+  
+  .mobile-px-3 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+/* Override any inline styles or framework defaults */
+.font-system,
+.font-system * {
+  font-family: sans-serif !important;
+}
+
+/* Force white text on common dark UI elements */
+.bg-dark, .bg-dark *, .navbar-dark, .navbar-dark *,
+.card-dark, .card-dark *, .modal-dark, .modal-dark * {
+  color: white !important;
+}
+
+/* Ensure proper contrast on all dark elements */
+[style*="background-color: rgb(31"], [style*="background-color: rgb(17"],
+[style*="background-color: rgb(55"], [style*="background-color: rgb(75"],
+[style*="background-color: rgb(107"], [style*="background-color: rgb(156"] {
+  color: white !important;
+}
+
+[style*="background-color: rgb(31"] *, [style*="background-color: rgb(17"] *,
+[style*="background-color: rgb(55"] *, [style*="background-color: rgb(75"] *,
+[style*="background-color: rgb(107"] *, [style*="background-color: rgb(156"] * {
+  color: white !important;
+}
+
+/* Specific overrides for common elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+textarea,
+select {
+  font-family: sans-serif !important;
+  font-weight: 400 !important;
+  color: #374151 !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Placeholder text styling */
+input::placeholder,
+textarea::placeholder {
+  color: #9CA3AF !important;
+  font-weight: 400 !important;
+}
+
+/* Table cell text */
+td, th {
+  font-family: sans-serif !important;
+  color: #374151 !important;
+}
+
+/* Button text */
+button, .btn {
+  font-family: sans-serif !important;
+}
+
+/* Ensure consistent text rendering */
+.text-gray-700,
+.text-gray-600,
+.text-gray-500 {
+  color: #374151 !important;
+}
+
+/* Fix any remaining color issues */
+.text-black {
+  color: #111827 !important;
+}
+
+/* Ensure form labels are consistent */
+label, .label {
+  font-family: sans-serif !important;
+  font-weight: 400 !important;
+  color: #374151 !important;
+}
+
+/* Override any framework-specific font weights */
+.font-medium {
+  font-weight: 400 !important;
+}
+
+.font-semibold {
+  font-weight: 500 !important;
+}
+
+.font-bold {
+  font-weight: 600 !important;
+}
+
+/* Ensure consistent spacing and sizing */
+.text-sm {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.text-base {
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* Fix any remaining gray color variations */
+.text-gray-900 {
+  color: #111827 !important;
+}
+
+.text-gray-800 {
+  color: #1F2937 !important;
+}
+
+.text-gray-700 {
+  color: #374151 !important;
+}
+
+.text-gray-600 {
+  color: #4B5563 !important;
+}
+
+.text-gray-500 {
+  color: #6B7280 !important;
+}
+
+/* Mobile-only responsive design */
+@media (max-width: 640px) {
+  /* Mobile padding and spacing */
+  .p-6 { padding: 1rem !important; }
+  .p-4 { padding: 0.75rem !important; }
+  .px-6 { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .py-6 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+  .space-y-6 > * + * { margin-top: 1rem !important; }
+  .space-x-4 > * + * { margin-left: 0.75rem !important; }
+  
+  /* Mobile table improvements */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  
+  /* Mobile text sizes */
+  .text-3xl { font-size: 1.5rem !important; }
+  .text-2xl { font-size: 1.25rem !important; }
+  .text-xl { font-size: 1.125rem !important; }
+  
+  /* Mobile viewport fixes */
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Mobile buttons */
+  button {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+    min-height: 44px !important; /* Touch target */
+  }
+  
+  /* Mobile inputs */
+  input, textarea, select {
+    padding: 0.75rem !important;
+    font-size: 1rem !important;
+    min-height: 44px !important;
+  }
+  
+  /* Mobile tables */
+  table {
+    font-size: 0.75rem !important;
+  }
+  
+  th, td {
+    padding: 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Mobile cards */
+  .rounded-xl { border-radius: 0.5rem !important; }
+  .shadow-lg { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important; }
+}
+
+/* Responsive flex utilities */
+.mobile-flex-col {
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .mobile-flex-col {
+    flex-direction: row;
+  }
+}
+
+/* Mobile-friendly navigation */
+@media (max-width: 1023px) {
+  .sidebar {
+    width: 100% !important;
+    max-width: 280px !important;
+    position: fixed !important;
+    z-index: 50 !important;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  button:hover {
+    transform: none !important;
+  }
+  
+  .card-hover:hover {
+    transform: none !important;
+  }
+  
+  /* Better touch feedback */
+  button:active, .btn:active {
+    transform: scale(0.98) !important;
+    transition: transform 0.1s ease !important;
+  }
+}
+
+/* Mobile form layouts */
+.mobile-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mobile-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-form-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile table responsiveness */
+.mobile-table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-table {
+  min-width: 800px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .mobile-table th,
+  .mobile-table td {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.75rem !important;
+    white-space: nowrap;
+  }
+  
+  /* Better touch targets */
+  button, .btn, input[type="button"], input[type="submit"] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+  
+  /* Improved scrollbar for mobile */
+  .overflow-x-auto::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 2px;
+  }
+}
+
+/* Mobile modal and overlay */
+@media (max-width: 640px) {
+  .modal {
+    margin: 1rem !important;
+    max-width: calc(100vw - 2rem) !important;
+    max-height: calc(100vh - 2rem) !important;
+  }
+}
+
+/* Mobile-specific utilities */
+.mobile-hidden {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .mobile-hidden {
+    display: block;
+  }
+}
+
+.mobile-only {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Tablet responsive breakpoints */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-responsive {
+    padding: 1rem !important;
+  }
+  
+  table th, table td {
+    padding: 0.5rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .sidebar {
+    width: 240px !important;
+  }
+}
+
+/* Mobile login page styles */
+@media (max-width: 640px) {
+  .login-container {
+    padding: 1rem !important;
+    min-height: 100vh;
+  }
+  
+  .login-card {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border-radius: 0.5rem !important;
+  }
+  
+  .login-form {
+    padding: 1.5rem !important;
+  }
+  
+  .login-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Mobile dashboard cards */
+@media (max-width: 640px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .dashboard-card {
+    padding: 1rem !important;
+  }
+  
+  .dashboard-card h3 {
+    font-size: 1rem !important;
+  }
+  
+  .dashboard-card .stat-number {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Mobile pagination */
+@media (max-width: 640px) {
+  .pagination {
+    flex-wrap: wrap !important;
+    gap: 0.25rem !important;
+  }
+  
+  .pagination button {
+    min-width: 44px !important;
+    padding: 0.5rem !important;
+  }
+  
+  .pagination .page-info {
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0.5rem 0 !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Custom animations and modern styling */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desktop scrollbar */
+@media (min-width: 769px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--primary), var(--primary-hover));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, var(--primary-hover), #9d174d);
+  }
+
+  /* Firefox scrollbar for desktop */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: var(--primary) #f1f5f9;
+  }
+}
+
+/* Modern card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Comprehensive dark background text visibility fixes */
+.bg-gray-800, .bg-gray-900, .bg-slate-800, .bg-slate-900,
+.bg-blue-800, .bg-blue-900, .bg-indigo-800, .bg-indigo-900,
+.bg-purple-800, .bg-purple-900, .bg-violet-800, .bg-violet-900,
+.bg-green-800, .bg-green-900, .bg-emerald-800, .bg-emerald-900,
+.bg-red-800, .bg-red-900, .bg-rose-800, .bg-rose-900,
+.bg-sky-800, .bg-sky-900, .bg-cyan-800, .bg-cyan-900,
+.bg-teal-800, .bg-teal-900, .bg-lime-800, .bg-lime-900,
+.bg-yellow-800, .bg-yellow-900, .bg-amber-800, .bg-amber-900,
+.bg-orange-800, .bg-orange-900, .bg-pink-800, .bg-pink-900,
+.bg-fuchsia-800, .bg-fuchsia-900, .bg-stone-800, .bg-stone-900,
+.bg-neutral-800, .bg-neutral-900, .bg-zinc-800, .bg-zinc-900 {
+  color: white !important;
+}
+
+/* Dark gradient backgrounds */
+.bg-gradient-to-r.from-gray-800, .bg-gradient-to-r.from-slate-800,
+.bg-gradient-to-r.from-blue-800, .bg-gradient-to-r.from-indigo-800,
+.bg-gradient-to-r.from-purple-800, .bg-gradient-to-r.from-violet-800,
+.bg-gradient-to-r.from-green-800, .bg-gradient-to-r.from-emerald-800,
+.bg-gradient-to-r.from-red-800, .bg-gradient-to-r.from-rose-800,
+.bg-gradient-to-r.from-sky-800, .bg-gradient-to-r.from-cyan-800,
+.bg-gradient-to-r.from-teal-800, .bg-gradient-to-r.from-lime-800,
+.bg-gradient-to-r.from-yellow-800, .bg-gradient-to-r.from-amber-800,
+.bg-gradient-to-r.from-orange-800, .bg-gradient-to-r.from-pink-800,
+.bg-gradient-to-r.from-fuchsia-800, .bg-gradient-to-r.from-stone-800,
+.bg-gradient-to-r.from-neutral-800, .bg-gradient-to-r.from-zinc-800 {
+  color: white !important;
+}
+
+/* All gradient directions */
+.bg-gradient-to-l, .bg-gradient-to-t, .bg-gradient-to-b,
+.bg-gradient-to-tr, .bg-gradient-to-tl, .bg-gradient-to-br, .bg-gradient-to-bl {
+  color: white !important;
+}
+
+/* Button text visibility on dark backgrounds */
+button.bg-gray-800, button.bg-gray-900, button.bg-slate-800, button.bg-slate-900,
+button.bg-blue-800, button.bg-blue-900, button.bg-indigo-800, button.bg-indigo-900,
+button.bg-purple-800, button.bg-purple-900, button.bg-violet-800, button.bg-violet-900,
+button.bg-green-800, button.bg-green-900, button.bg-emerald-800, button.bg-emerald-900,
+button.bg-red-800, button.bg-red-900, button.bg-rose-800, button.bg-rose-900,
+button.bg-sky-800, button.bg-sky-900, button.bg-cyan-800, button.bg-cyan-900,
+button.bg-teal-800, button.bg-teal-900, button.bg-lime-800, button.bg-lime-900,
+button.bg-yellow-800, button.bg-yellow-900, button.bg-amber-800, button.bg-amber-900,
+button.bg-orange-800, button.bg-orange-900, button.bg-pink-800, button.bg-pink-900 {
+  color: white !important;
+}
+
+/* Ensure ALL child elements have white text on dark backgrounds */
+.bg-gray-800 *, .bg-gray-900 *, .bg-slate-800 *, .bg-slate-900 *,
+.bg-blue-800 *, .bg-blue-900 *, .bg-indigo-800 *, .bg-indigo-900 *,
+.bg-purple-800 *, .bg-purple-900 *, .bg-violet-800 *, .bg-violet-900 *,
+.bg-green-800 *, .bg-green-900 *, .bg-emerald-800 *, .bg-emerald-900 *,
+.bg-red-800 *, .bg-red-900 *, .bg-rose-800 *, .bg-rose-900 *,
+.bg-sky-800 *, .bg-sky-900 *, .bg-cyan-800 *, .bg-cyan-900 *,
+.bg-teal-800 *, .bg-teal-900 *, .bg-lime-800 *, .bg-lime-900 *,
+.bg-yellow-800 *, .bg-yellow-900 *, .bg-amber-800 *, .bg-amber-900 *,
+.bg-orange-800 *, .bg-orange-900 *, .bg-pink-800 *, .bg-pink-900 *,
+.bg-fuchsia-800 *, .bg-fuchsia-900 *, .bg-stone-800 *, .bg-stone-900 *,
+.bg-neutral-800 *, .bg-neutral-900 *, .bg-zinc-800 *, .bg-zinc-900 * {
+  color: white !important;
+}
+
+/* Dark color classes that need white text */
+[class*="-800"], [class*="-900"] {
+  color: white !important;
+}
+
+[class*="-800"] *, [class*="-900"] * {
+  color: white !important;
+}
+
+/* Override for inputs, selects, and textareas that should remain readable */
+.bg-gray-800 input, .bg-gray-900 input, .bg-slate-800 input, .bg-slate-900 input,
+.bg-blue-800 input, .bg-blue-900 input, .bg-indigo-800 input, .bg-indigo-900 input,
+.bg-purple-800 input, .bg-purple-900 input, .bg-violet-800 input, .bg-violet-900 input,
+.bg-green-800 input, .bg-green-900 input, .bg-emerald-800 input, .bg-emerald-900 input,
+.bg-red-800 input, .bg-red-900 input, .bg-rose-800 input, .bg-rose-900 input,
+[class*="-800"] input, [class*="-900"] input,
+[class*="-800"] select, [class*="-900"] select,
+[class*="-800"] textarea, [class*="-900"] textarea {
+  color: #374151 !important;
+  background-color: white !important;
+}
+
+/* Specific text color overrides for ALL dark backgrounds */
+[class*="-800"] h1, [class*="-800"] h2, [class*="-800"] h3, [class*="-800"] h4, [class*="-800"] h5, [class*="-800"] h6,
+[class*="-900"] h1, [class*="-900"] h2, [class*="-900"] h3, [class*="-900"] h4, [class*="-900"] h5, [class*="-900"] h6 {
+  color: white !important;
+}
+
+[class*="-800"] p, [class*="-800"] span, [class*="-800"] div, [class*="-800"] a,
+[class*="-900"] p, [class*="-900"] span, [class*="-900"] div, [class*="-900"] a {
+  color: white !important;
+}
+
+/* Table text on ALL dark backgrounds */
+[class*="-800"] table, [class*="-900"] table {
+  color: white !important;
+}
+
+[class*="-800"] th, [class*="-800"] td,
+[class*="-900"] th, [class*="-900"] td {
+  color: white !important;
+}
+
+/* Sidebar specific fixes */
+.sidebar, nav[class*="bg-"], .sidebar * {
+  color: white !important;
+}
+
+/* Navigation and menu fixes */
+.nav-link, .navbar-nav .nav-link, .dropdown-item {
+  color: white !important;
+}
+
+/* Force white text on any element with dark background */
+.text-white, .text-white * {
+  color: white !important;
+}
+
+/* Comprehensive table text fixes */
+table, table *, th, th *, td, td *, tbody, tbody *, thead, thead * {
+  color: #111827 !important;
+  font-family: sans-serif !important;
+}
+
+/* Ensure all text elements are black by default */
+.text-black, .text-gray-900, .text-gray-800, .text-gray-700 {
+  color: #111827 !important;
+}
+
+/* Override any inherited white text in tables */
+table .text-white {
+  color: #111827 !important;
+}
+
+/* Specific table cell overrides */
+td.text-black, th.text-black,
+td .text-black, th .text-black {
+  color: #111827 !important;
+}
+
+/* Force black text in all table content */
+table td, table th, table td *, table th * {
+  color: #111827 !important;
+}
+
+/* Override any framework text colors in tables */
+table .text-blue-600, table .text-green-800, table .text-yellow-800, table .text-red-800 {
+  color: inherit !important;
+}
+
+/* Ensure status badges maintain their colors but text is visible */
+.bg-green-100 { color: #065f46 !important; }
+.bg-yellow-100 { color: #92400e !important; }
+.bg-red-100 { color: #991b1b !important; }
+.bg-gray-100 { color: #374151 !important; }
+
+/* Force all div, span, p elements to be black unless specifically styled */
+div:not([class*="bg-"]):not([class*="text-white"]) {
+  color: #111827 !important;
+}
+
+span:not([class*="bg-"]):not([class*="text-white"]) {
+  color: #111827 !important;
+}
+
+p:not([class*="bg-"]):not([class*="text-white"]) {
+  color: #111827 !important;
+}
+
+/* PHP Admin Report Styling */
+.report-table {
+  font-family: Arial, sans-serif !important;
+  font-size: 11px !important;
+  border-collapse: collapse !important;
+  width: 100% !important;
+}
+
+.report-table th {
+  background-color: #f8f9fa !important;
+  border: 1px solid #dee2e6 !important;
+  padding: 4px 6px !important;
+  font-weight: bold !important;
+  font-size: 11px !important;
+  text-align: left !important;
+  color: #212529 !important;
+}
+
+.report-table td {
+  border: 1px solid #dee2e6 !important;
+  padding: 3px 6px !important;
+  font-size: 11px !important;
+  color: #212529 !important;
+  vertical-align: top !important;
+}
+
+.report-amount {
+  text-align: right !important;
+  font-family: monospace !important;
+  font-weight: bold !important;
+}
+
+.report-date {
+  font-family: Arial, sans-serif !important;
+  font-size: 11px !important;
+  white-space: nowrap !important;
+}
+
+.report-header {
+  font-family: Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  margin-bottom: 10px !important;
+}
+
+.php-admin-page {
+  font-family: Arial, sans-serif !important;
+  font-size: 11px !important;
+  background-color: white !important;
+  padding: 10px !important;
+}

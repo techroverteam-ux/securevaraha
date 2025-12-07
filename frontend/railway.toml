@@ -1,0 +1,18 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "railway.dockerfile"
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+
+[[services]]
+name = "mysql"
+source = "."
+
+[services.variables]
+MYSQL_ROOT_PASSWORD = "RootPass2024!"
+MYSQL_DATABASE = "varaosrc_hospital_management"
+MYSQL_USER = "varaha_prod"
+MYSQL_PASSWORD = "SecurePass2024!"
